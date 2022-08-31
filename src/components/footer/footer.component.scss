@@ -1,0 +1,14 @@
+@import '../../sass/variables.scss';
+
+.footer {
+  background-color: cadetblue;
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7rem;
+    margin: 0 auto;
+    max-width: $default-container;
+  }
+}

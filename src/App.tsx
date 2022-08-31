@@ -1,16 +1,16 @@
-import { Provider } from 'react-redux';
-import { store } from './state';
+import Header from './components/header/header.component';
+import Forecast from './components/forecast/forecast.component';
+import Footer from './components/footer/footer.component';
 
-import SearchBar from './components/search-bar/search-bar.component';
+import './app.scss';
 
 function App() {
   return (
-    <Provider store={store}>
-      <div className="App">
-        <h2>Hello!</h2>
-        <SearchBar />
-      </div>
-    </Provider>
+    <div className="app">
+      <Header />
+      <Forecast />
+      <Footer />
+    </div>
   );
 }
 

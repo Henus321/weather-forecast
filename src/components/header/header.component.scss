@@ -1,0 +1,23 @@
+@import '../../sass/variables.scss';
+
+.header {
+  background-color: olive;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem;
+    margin: 0 auto;
+    max-width: $default-container;
+  }
+
+  &__logo {
+    color: #333;
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: normal;
+  }
+}
