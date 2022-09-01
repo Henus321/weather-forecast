@@ -1,23 +1,40 @@
 @import '../../sass/variables.scss';
 
 .header {
-  background-color: olive;
+  background-color: #fff;
 
   &__content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 3rem;
+    padding: 1.5rem 2rem;
     margin: 0 auto;
     max-width: $default-container;
   }
 
+  &__logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   &__logo {
-    color: #333;
+    font-size: 3.5rem;
+    padding: 3px;
+    border-radius: 50%;
+    background-color: orangered;
+    color: #fff;
+    margin-right: 1rem;
   }
 
   &__title {
+    font-size: 2.5rem;
+    margin-right: 3rem;
+  }
+
+  &__sub-title {
     font-size: 2rem;
     font-weight: normal;
+    margin-right: 1rem;
   }
 }
