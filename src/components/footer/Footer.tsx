@@ -1,9 +1,11 @@
+import React from 'react';
+
 import { FaCloudMoonRain } from 'react-icons/fa';
 import { FaGithub } from 'react-icons/fa';
 import { FaYoutube } from 'react-icons/fa';
 import { FaVk } from 'react-icons/fa';
 
-import './footer.component.scss';
+import './footer.scss';
 
 const Footer: React.FC = () => {
   return (

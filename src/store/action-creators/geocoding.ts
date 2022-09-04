@@ -1,12 +1,11 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import { ActionType } from '../action-types';
-import { Action } from '../actions';
+import { GeocodingAction, GeocodingActionTypes } from '../../types/geocoding';
 
 export const SearchGeocoding = (city: string) => {
-  return async (dispatch: Dispatch<Action>) => {
+  return async (dispatch: Dispatch<GeocodingAction>) => {
     dispatch({
-      type: ActionType.SEARCH_GEOCODING,
+      type: GeocodingActionTypes.FETCH_GEOCODING,
     });
     try {
       const { data } = await axios.get(
@@ -18,17 +17,15 @@ export const SearchGeocoding = (city: string) => {
         }
       );
 
-      const cities = data.results.map((result: any) => {
-        return result.name;
-      });
+      const cities = data.results[0];
 
       dispatch({
-        type: ActionType.SEARCH_GEOCODING_SUCCESS,
+        type: GeocodingActionTypes.FETCH_GEOCODING_SUCCESS,
         payload: cities,
       });
     } catch (error: any) {
       dispatch({
-        type: ActionType.SEARCH_GEOCODING_ERROR,
+        type: GeocodingActionTypes.FETCH_GEOCODING_ERROR,
         payload: error.message,
       });
     }

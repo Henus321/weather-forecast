@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import geocodingReducer from './geocodingReducer';
+import { geocodingReducer } from './geocodingReducer';
 
 const reducers = combineReducers({
   geocoding: geocodingReducer,

@@ -1,6 +1,8 @@
-import './header.component.scss';
-import SearchBar from '../search-bar/search-bar.component';
+import React from 'react';
+import SearchBar from '../search-bar/SearchBar';
+
 import { FaReact } from 'react-icons/fa';
+import './header.scss';
 
 const Header: React.FC = () => {
   return (

@@ -1,6 +1,6 @@
-import Header from './components/header/header.component';
-import Forecast from './components/forecast/forecast.component';
-import Footer from './components/footer/footer.component';
+import Header from './components/header/Header';
+import Forecast from './components/forecast/Forecast';
+import Footer from './components/footer/Footer';
 
 import './app.scss';
 

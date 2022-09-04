@@ -1,0 +1,12 @@
+@import '../../sass/variables.scss';
+
+.forecast {
+  display: grid;
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: min-content 1fr min-content max-content;
+  padding: 2rem;
+  margin: 0 auto 4rem;
+  max-width: $default-container;
+}
