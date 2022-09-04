@@ -1,11 +1,14 @@
 import React from 'react';
+import { useTypedSelector } from '../../../hooks/useTypedSelector';
 
 import './locationInfo.scss';
 
 const LocationInfo: React.FC = () => {
+  const { data } = useTypedSelector((state) => state.geocoding);
+
   return (
     <span className="location-info">
-      Япония &rsaquo; Префектура Токио &rsaquo; Токио
+      {data.country} &rsaquo; {data.name}
     </span>
   );
 };

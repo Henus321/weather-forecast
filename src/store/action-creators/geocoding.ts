@@ -23,6 +23,7 @@ export const SearchGeocoding = (city: string) => {
         type: GeocodingActionTypes.FETCH_GEOCODING_SUCCESS,
         payload: cities,
       });
+      // error type?
     } catch (error: any) {
       dispatch({
         type: GeocodingActionTypes.FETCH_GEOCODING_ERROR,
