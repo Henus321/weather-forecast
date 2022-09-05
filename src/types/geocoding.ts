@@ -12,6 +12,9 @@ export interface GeocodingState {
 
 export interface GeocodingItem {
   name: string;
+  timezone: string;
+  latitude: number;
+  longitude: number;
   country: string;
 }
 

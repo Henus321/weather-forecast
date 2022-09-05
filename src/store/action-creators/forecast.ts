@@ -21,10 +21,18 @@ export const FetchForecastAsync = () => {
       );
 
       const { hourly } = data;
+      const { time, temperature_2m } = hourly;
+
+      const fixedArray = time.map((time: string, index: number) => {
+        return {
+          time: time,
+          temperature: temperature_2m[index],
+        };
+      });
 
       dispatch({
         type: ForecastActionTypes.FETCH_FORECAST_SUCCESS,
-        payload: hourly,
+        payload: fixedArray,
       });
       // error type?
     } catch (error: any) {

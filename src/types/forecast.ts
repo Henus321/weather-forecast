@@ -7,12 +7,7 @@ export enum ForecastActionTypes {
 export interface ForecastState {
   loading: boolean;
   error: string | null;
-  forecast: ForecastArrays;
-}
-
-export interface ForecastArrays {
-  temperature: number[];
-  time: string[];
+  forecast: [];
 }
 
 interface fetchForecastAction {
@@ -22,7 +17,7 @@ interface fetchForecastAction {
 interface fetchForecastSuccessAction {
   type: ForecastActionTypes.FETCH_FORECAST_SUCCESS;
   // temporary
-  payload: ForecastArrays;
+  payload: [];
 }
 
 interface fetchForecastErrorAction {

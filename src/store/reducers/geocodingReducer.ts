@@ -2,11 +2,14 @@ import {
   GeocodingItem,
   GeocodingState,
   GeocodingAction,
-  GeocodingActionTypes
+  GeocodingActionTypes,
 } from '../../types/geocoding';
 
 const initialData: GeocodingItem = {
   name: '',
+  timezone: '',
+  latitude: 0,
+  longitude: 0,
   country: '',
 };
 
