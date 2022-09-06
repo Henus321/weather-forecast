@@ -4,13 +4,13 @@ import { useActions } from '../../../hooks/useActions';
 import './searchBar.scss';
 
 const SearchBar: React.FC = () => {
-  const [city, setCity] = useState('');
-  const { SearchGeocoding } = useActions();
+  const [searchCity, setSearchCity] = useState('');
+  const { FetchCityAsync } = useActions();
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    SearchGeocoding(city);
+    FetchCityAsync(searchCity);
   };
 
   return (
@@ -19,8 +19,8 @@ const SearchBar: React.FC = () => {
         <input
           placeholder="Введите город..."
           className="search-bar__input"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
+          value={searchCity}
+          onChange={(e) => setSearchCity(e.target.value)}
         />
         <button className="search-bar__button">Поиск</button>
       </form>

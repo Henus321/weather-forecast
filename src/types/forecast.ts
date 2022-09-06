@@ -4,10 +4,15 @@ export enum ForecastActionTypes {
   FETCH_FORECAST_ERROR = 'FETCH_FORECAST_ERROR',
 }
 
+export interface ForecastItem {
+  time: string;
+  temperature: number;
+}
+
 export interface ForecastState {
   loading: boolean;
   error: string | null;
-  forecast: [];
+  forecast: ForecastItem;
 }
 
 interface fetchForecastAction {
@@ -16,8 +21,7 @@ interface fetchForecastAction {
 
 interface fetchForecastSuccessAction {
   type: ForecastActionTypes.FETCH_FORECAST_SUCCESS;
-  // temporary
-  payload: [];
+  payload: ForecastItem;
 }
 
 interface fetchForecastErrorAction {

@@ -1,12 +1,10 @@
 import { combineReducers } from 'redux';
-import { geocodingReducer } from './geocodingReducer';
+import { cityReducer } from './cityReducer';
 import { forecastReducer } from './forecastReducer';
-import { dateReducer } from './dateReducer';
 
 const reducers = combineReducers({
-  geocoding: geocodingReducer,
   forecast: forecastReducer,
-  date: dateReducer,
+  city: cityReducer,
 });
 
 export default reducers;

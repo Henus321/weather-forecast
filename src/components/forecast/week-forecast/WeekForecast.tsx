@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTypedSelector } from '../../../hooks/useTypedSelector';
 
 import { FaMoon } from 'react-icons/fa';
 import { FaCaretLeft } from 'react-icons/fa';

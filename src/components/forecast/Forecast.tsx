@@ -12,18 +12,15 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import './forecast.scss';
 
 const Forecast: React.FC = () => {
-  const { FetchForecastAsync, FetchDateAsync } = useActions();
-  // const { forecast } = useTypedSelector((state) => state.forecast);
-  const { date } = useTypedSelector((state) => state.date);
+  const { city } = useTypedSelector((state) => state.city);
+  const { forecast } = useTypedSelector((state) => state.forecast);
+  const { FetchForecastAsync } = useActions();
 
   useEffect(() => {
-    FetchDateAsync();
-    FetchForecastAsync();
-    // eslint-disable-next-line
-  }, []);
+    if (city.name) FetchForecastAsync(city);
+  }, [city]);
 
-  // console.log(forecast);
-  console.log(date);
+  console.log(forecast);
 
   return (
     <div className="forecast">

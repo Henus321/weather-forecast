@@ -1,13 +1,19 @@
 import {
   ForecastState,
+  ForecastItem,
   ForecastAction,
   ForecastActionTypes,
 } from '../../types/forecast';
 
+const initialItem: ForecastItem = {
+  time: '',
+  temperature: 0,
+};
+
 const initialState: ForecastState = {
   loading: false,
   error: null,
-  forecast: [],
+  forecast: initialItem,
 };
 
 export const forecastReducer = (
@@ -19,7 +25,7 @@ export const forecastReducer = (
       return {
         loading: true,
         error: null,
-        forecast: [],
+        forecast: initialItem,
       };
     case ForecastActionTypes.FETCH_FORECAST_SUCCESS:
       return {
@@ -31,7 +37,7 @@ export const forecastReducer = (
       return {
         loading: false,
         error: action.payload,
-        forecast: [],
+        forecast: initialItem,
       };
     default:
       return state;
