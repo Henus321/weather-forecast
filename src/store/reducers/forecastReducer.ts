@@ -1,13 +1,51 @@
 import {
   ForecastState,
   ForecastItem,
+  Location,
+  CurrentTime,
+  CurrentForecast,
+  HoursForecast,
+  WeekForecast,
   ForecastAction,
   ForecastActionTypes,
 } from '../../types/forecast';
 
-const initialItem: ForecastItem = {
+const initialLocation: Location = {
+  name: '',
+  timezone: '',
+  latitude: 0,
+  longitude: 0,
+};
+const initialCurrentTime: CurrentTime = {
   time: '',
-  temperature: 0,
+  timeOfDay: '',
+  dayOfWeek: '',
+  dayOfWeekIndex: 0,
+};
+const initialCurrentForecast: CurrentForecast = {
+  temperature: '',
+  weatherIcon: '',
+  windSpeed: 0,
+};
+const initialHoursForecast: HoursForecast = {
+  time: [],
+  weatherIcons: [],
+  temperature: [],
+};
+const initialWeekForecast: WeekForecast = {
+  weekDaytimeTemp: [],
+  weekNighttimeTemp: [],
+  weekWeatherIcons: [],
+  weekDays: [],
+  weekDates: [],
+};
+
+const initialItem: ForecastItem = {
+  location: initialLocation,
+  currentTime: initialCurrentTime,
+  currentForecast: initialCurrentForecast,
+  hoursForecast: initialHoursForecast,
+  weekForecast: initialWeekForecast,
 };
 
 const initialState: ForecastState = {

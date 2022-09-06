@@ -1,17 +1,24 @@
 import React from 'react';
-import { useTypedSelector } from '../../../hooks/useTypedSelector';
 
-import { FaMoon } from 'react-icons/fa';
-import { FaCaretLeft } from 'react-icons/fa';
-import { FaCaretRight } from 'react-icons/fa';
-
+import { FaMoon, FaCaretLeft, FaCaretRight } from 'react-icons/fa';
 import './weekForecast.scss';
 
 const WeekForecast: React.FC = () => {
+  // const iconType = (icon: string) => {
+  //   switch (icon) {
+  //     case 'moon': {
+  //       return <FaMoon />;
+  //     }
+  //     default:
+  //       return <FaCloudMoon />;
+  //   }
+  // };
+
   return (
     <div className="week-forecast">
       <h2 className="week-forecast__title">Прогноз на 10 дней</h2>
       <div className="week-forecast__info-container">
+        {/* {iconType('moon')} */}
         <button className="week-forecast__button">
           <FaCaretLeft />
         </button>

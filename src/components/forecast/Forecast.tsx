@@ -18,6 +18,7 @@ const Forecast: React.FC = () => {
 
   useEffect(() => {
     if (city.name) FetchForecastAsync(city);
+    // eslint-disable-next-line
   }, [city]);
 
   console.log(forecast);

@@ -1,40 +1,55 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import { ForecastAction, ForecastActionTypes } from '../../types/forecast';
+import {
+  ForecastAction,
+  ForecastActionTypes,
+  ForecastItem,
+} from '../../types/forecast';
 import { CityItem } from '../../types/city';
+import {
+  createLocationObject,
+  createCurrentTimeObject,
+  createCurrentForecastObject,
+  createHoursObject,
+  createWeekObject,
+} from '../../utils/dataConverters/data-converter.utils';
+import { METEO_API_URL } from '../../config';
 
 export const FetchForecastAsync = (cityData: CityItem) => {
-  const { latitude, longitude, name, country, curCityTime, dayOfWeek } =
-    cityData;
+  const { latitude, longitude, timezone } = cityData;
   return async (dispatch: Dispatch<ForecastAction>) => {
     dispatch({
       type: ForecastActionTypes.FETCH_FORECAST,
     });
     try {
-      const { data } = await axios.get(
-        'https://api.open-meteo.com/v1/forecast',
-        {
-          params: {
-            latitude: latitude,
-            longitude: longitude,
-            hourly: 'temperature_2m',
-          },
-        }
-      );
-
-      const { hourly } = data;
-      const { time, temperature_2m } = hourly;
-
-      const transformedArray = time.map((time: string, index: number) => {
-        return {
-          time: time,
-          temperature: temperature_2m[index],
-        };
+      const { data } = await axios.get(`${METEO_API_URL}`, {
+        params: {
+          latitude: latitude,
+          longitude: longitude,
+          hourly: 'temperature_2m,weathercode',
+          current_weather: true,
+          windspeed_unit: 'ms',
+          timezone: timezone,
+        },
       });
+
+      const location = createLocationObject(cityData);
+      const currentTime = createCurrentTimeObject(cityData);
+      const currentForecast = createCurrentForecastObject(data);
+      const hoursForecast = createHoursObject(data);
+      const weekForecast = createWeekObject(data, cityData);
+
+      const forecast: ForecastItem = {
+        location,
+        currentTime,
+        currentForecast,
+        hoursForecast,
+        weekForecast,
+      };
 
       dispatch({
         type: ForecastActionTypes.FETCH_FORECAST_SUCCESS,
-        payload: transformedArray,
+        payload: forecast,
       });
       // error type?
     } catch (error: any) {
