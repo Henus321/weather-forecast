@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import uuid from 'react-uuid';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
+import { SCROLL_OFFSET } from '../../../config';
 
 import WeatherIcon from '../weather-icon/WeatherIcon';
 import { FaCaretLeft, FaCaretRight } from 'react-icons/fa';
@@ -11,12 +12,21 @@ const HoursForecast: React.FC = () => {
     (state) => state.forecast.forecast
   );
 
+  const containerEl = useRef<HTMLUListElement>(null);
+
+  const scroll = (scrollOffset: number) => {
+    containerEl.current!.scrollLeft += scrollOffset;
+  };
+
   return (
     <div className="hours-forecast">
-      <button className="hours-forecast__button">
+      <button
+        onClick={() => scroll(-SCROLL_OFFSET)}
+        className="hours-forecast__button"
+      >
         <FaCaretLeft />
       </button>
-      <ul className="hours-forecast__list">
+      <ul ref={containerEl} className="hours-forecast__list">
         {hoursForecast.map((item) => (
           <li key={uuid()} className="hours-forecast__item">
             <span>{item.time}</span>
@@ -27,7 +37,10 @@ const HoursForecast: React.FC = () => {
           </li>
         ))}
       </ul>
-      <button className="hours-forecast__button">
+      <button
+        onClick={() => scroll(SCROLL_OFFSET)}
+        className="hours-forecast__button"
+      >
         <FaCaretRight />
       </button>
     </div>

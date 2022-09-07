@@ -11,7 +11,8 @@
     padding: 1rem 1.5rem;
     justify-content: space-between;
     list-style: none;
-    overflow-x: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
   }
 
   &__item {
