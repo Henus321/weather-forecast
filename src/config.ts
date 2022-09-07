@@ -7,6 +7,7 @@ export const DUSK_TIME = 20;
 export const DELAY_TO_DAYTIME = 15;
 export const DELAY_TO_NIGHTTIME = 3;
 export const HOURS_PER_DAY = 24;
+export const DAY_ICON_NAME = 'day';
 export const WEEK_DAY_NAMES = [
   'Monday',
   'Tuesday',

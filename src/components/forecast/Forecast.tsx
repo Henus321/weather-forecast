@@ -21,8 +21,6 @@ const Forecast: React.FC = () => {
     // eslint-disable-next-line
   }, [city]);
 
-  console.log(forecast);
-
   return (
     <div className="forecast">
       <LocationInfo />

@@ -1,4 +1,5 @@
 import {
+  DAY_ICON_NAME,
   DELAY_TO_DAYTIME,
   DELAY_TO_NIGHTTIME,
   HOURS_PER_DAY,
@@ -12,6 +13,7 @@ import {
   weatherCodeToIcon,
 } from '../../helpers/helpers';
 import { CityItem } from '../../types/city';
+import { ForecastFetchedData } from '../../types/forecast';
 
 export const createLocationObject = (data: CityItem) => {
   return {
@@ -36,9 +38,8 @@ export const createCurrentTimeObject = (data: CityItem) => {
   };
 };
 
-// DO TYPE LATER
-export const createCurrentForecastObject = (data: any) => {
-  const currentHour = data.current_weather.time.slice(11, 13);
+export const createCurrentForecastObject = (data: ForecastFetchedData) => {
+  const currentHour = +data.current_weather.time.slice(11, 13);
   const currentDayTime = convertHourToDaytime(currentHour);
   const weatherIcon = weatherCodeToIcon(
     data.current_weather.weathercode,
@@ -51,22 +52,21 @@ export const createCurrentForecastObject = (data: any) => {
   };
 };
 
-// DO TYPE LATER
-export const createHoursObject = (data: any) => {
+export const createHoursObject = (data: ForecastFetchedData) => {
   const allWeekTime = data.hourly.time;
   const currentTimeIndex = allWeekTime.findIndex(
-    (item: any) => item === data.current_weather.time
+    (item: string) => item === data.current_weather.time
   );
   const lastTimeIndex = currentTimeIndex + HOUR_CARDS_QUANTITY;
   const hourlyCardsTime = allWeekTime
     .slice(currentTimeIndex, lastTimeIndex)
-    .map((time: any) => time.slice(-5).trim());
+    .map((time: string) => time.slice(-5).trim());
   const hourlyCardsDayTime = hourlyCardsTime
-    .map((time: any) => time.slice(0, 2))
-    .map((time: any) => convertHourToDaytime(time));
+    .map((time: string) => time.slice(0, 2))
+    .map((time: string) => convertHourToDaytime(+time));
   const hourlyCardsWeatherIcons = data.hourly.weathercode
     .slice(currentTimeIndex, lastTimeIndex)
-    .map((code: any, idx: any) =>
+    .map((code: number, idx: number) =>
       weatherCodeToIcon(code, hourlyCardsDayTime[idx])
     );
   const hourlyCardsTemperature = data.hourly.temperature_2m.slice(
@@ -81,25 +81,26 @@ export const createHoursObject = (data: any) => {
   };
 };
 
-// DO TYPE LATER
-export const createWeekObject = (data: any, forecast: any) => {
+export const createWeekObject = (
+  data: ForecastFetchedData,
+  forecast: CityItem
+) => {
   const allWeekTime = data.hourly.time;
   const allWeekTemp = data.hourly.temperature_2m;
   const allWeatherCodes = data.hourly.weathercode;
   const currentDayOfWeekIndex = forecast.dayOfWeek;
 
   const weekDaytimeTemp = allWeekTemp.filter(
-    (_: any, idx: any) => (idx - DELAY_TO_DAYTIME) % HOURS_PER_DAY === 0
+    (_: number, idx: number) => (idx - DELAY_TO_DAYTIME) % HOURS_PER_DAY === 0
   );
   const weekNightimeTemp = allWeekTemp.filter(
-    (_: any, idx: any) => (idx - DELAY_TO_NIGHTTIME) % HOURS_PER_DAY === 0
+    (_: number, idx: number) => (idx - DELAY_TO_NIGHTTIME) % HOURS_PER_DAY === 0
   );
   const weekWeatherIcons = allWeatherCodes
     .filter(
-      (_: any, idx: any) => (idx - DELAY_TO_DAYTIME) % HOURS_PER_DAY === 0
+      (_: number, idx: number) => (idx - DELAY_TO_DAYTIME) % HOURS_PER_DAY === 0
     )
-    .map((code: any) => weatherCodeToIcon(code, 'day'));
-  // CHANGE STRING ABOVE? WHY 'DAY'
+    .map((code: number) => weatherCodeToIcon(code, DAY_ICON_NAME));
   const currentWeekDays = [
     ...WEEK_DAY_NAMES.slice(currentDayOfWeekIndex - 1),
     ...WEEK_DAY_NAMES.slice(0, currentDayOfWeekIndex - 1),

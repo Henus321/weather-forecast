@@ -4,6 +4,20 @@ export enum ForecastActionTypes {
   FETCH_FORECAST_ERROR = 'FETCH_FORECAST_ERROR',
 }
 
+export interface ForecastFetchedData {
+  current_weather: {
+    time: string;
+    weathercode: number;
+    temperature: number;
+    windspeed: number;
+  };
+  hourly: {
+    time: string[];
+    weathercode: number[];
+    temperature_2m: number[];
+  };
+}
+
 export interface ForecastState {
   loading: boolean;
   error: string | null;
@@ -33,7 +47,7 @@ export interface CurrentTime {
 }
 
 export interface CurrentForecast {
-  temperature: string;
+  temperature: number;
   weatherIcon: string;
   windSpeed: number;
 }

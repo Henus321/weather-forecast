@@ -23,7 +23,7 @@ const initialCurrentTime: CurrentTime = {
   dayOfWeekIndex: 0,
 };
 const initialCurrentForecast: CurrentForecast = {
-  temperature: '',
+  temperature: 0,
   weatherIcon: '',
   windSpeed: 0,
 };
