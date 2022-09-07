@@ -12,6 +12,7 @@ import {
 
 const initialLocation: Location = {
   name: '',
+  country: '',
   timezone: '',
   latitude: 0,
   longitude: 0,
@@ -28,24 +29,24 @@ const initialCurrentForecast: CurrentForecast = {
   windSpeed: 0,
 };
 const initialHoursForecast: HoursForecast = {
-  time: [],
-  weatherIcons: [],
-  temperature: [],
+  time: '',
+  weatherIcons: '',
+  temperature: 0,
 };
 const initialWeekForecast: WeekForecast = {
-  weekDaytimeTemp: [],
-  weekNighttimeTemp: [],
-  weekWeatherIcons: [],
-  weekDays: [],
-  weekDates: [],
+  weekDaytimeTemp: 0,
+  weekNighttimeTemp: 0,
+  weekWeatherIcons: '',
+  weekDays: '',
+  weekDates: '',
 };
 
 const initialItem: ForecastItem = {
   location: initialLocation,
   currentTime: initialCurrentTime,
   currentForecast: initialCurrentForecast,
-  hoursForecast: initialHoursForecast,
-  weekForecast: initialWeekForecast,
+  hoursForecast: [initialHoursForecast],
+  weekForecast: [initialWeekForecast],
 };
 
 const initialState: ForecastState = {

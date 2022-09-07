@@ -1,8 +1,5 @@
 import React, { useEffect } from 'react';
 
-import LocationInfo from './location-info/LocationInfo';
-import TodayInfo from './today-info/TodayInfo';
-import WeekInfo from './week-info/WeekInfo';
 import TodayForecast from './today-forecast/TodayForecast';
 import LocationMap from './location-map/LocationMap';
 import WeekForecast from './week-forecast/WeekForecast';
@@ -13,7 +10,6 @@ import './forecast.scss';
 
 const Forecast: React.FC = () => {
   const { city } = useTypedSelector((state) => state.city);
-  const { forecast } = useTypedSelector((state) => state.forecast);
   const { FetchForecastAsync } = useActions();
 
   useEffect(() => {
@@ -23,9 +19,6 @@ const Forecast: React.FC = () => {
 
   return (
     <div className="forecast">
-      <LocationInfo />
-      <TodayInfo />
-      <WeekInfo />
       <TodayForecast />
       <LocationMap />
       <WeekForecast />

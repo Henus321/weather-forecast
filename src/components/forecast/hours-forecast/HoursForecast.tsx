@@ -1,88 +1,31 @@
 import React from 'react';
+import uuid from 'react-uuid';
+import { useTypedSelector } from '../../../hooks/useTypedSelector';
 
-import { FaMoon } from 'react-icons/fa';
-import { FaCaretLeft } from 'react-icons/fa';
-import { FaCaretRight } from 'react-icons/fa';
-
+import WeatherIcon from '../weather-icon/WeatherIcon';
+import { FaCaretLeft, FaCaretRight } from 'react-icons/fa';
 import './hoursForecast.scss';
 
 const HoursForecast: React.FC = () => {
+  const { hoursForecast } = useTypedSelector(
+    (state) => state.forecast.forecast
+  );
+
   return (
     <div className="hours-forecast">
       <button className="hours-forecast__button">
         <FaCaretLeft />
       </button>
       <ul className="hours-forecast__list">
-        <li className="hours-forecast__item">
-          <span>0:00</span>
-          <span>
-            <FaMoon />
-          </span>
-          <span>+27&#176;</span>
-        </li>
-        <li className="hours-forecast__item">
-          <span>1:00</span>
-          <span>
-            <FaMoon />
-          </span>
-          <span>+27&#176;</span>
-        </li>
-        <li className="hours-forecast__item">
-          <span>2:00</span>
-          <span>
-            <FaMoon />
-          </span>
-          <span>+27&#176;</span>
-        </li>
-        <li className="hours-forecast__item">
-          <span>3:00</span>
-          <span>
-            <FaMoon />
-          </span>
-          <span>+27&#176;</span>
-        </li>
-        <li className="hours-forecast__item">
-          <span>4:00</span>
-          <span>
-            <FaMoon />
-          </span>
-          <span>+27&#176;</span>
-        </li>
-        <li className="hours-forecast__item">
-          <span>5:00</span>
-          <span>
-            <FaMoon />
-          </span>
-          <span>+27&#176;</span>
-        </li>
-        <li className="hours-forecast__item">
-          <span>6:00</span>
-          <span>
-            <FaMoon />
-          </span>
-          <span>+27&#176;</span>
-        </li>
-        <li className="hours-forecast__item">
-          <span>7:00</span>
-          <span>
-            <FaMoon />
-          </span>
-          <span>+27&#176;</span>
-        </li>
-        <li className="hours-forecast__item">
-          <span>8:00</span>
-          <span>
-            <FaMoon />
-          </span>
-          <span>+27&#176;</span>
-        </li>
-        <li className="hours-forecast__item">
-          <span>9:00</span>
-          <span>
-            <FaMoon />
-          </span>
-          <span>+27&#176;</span>
-        </li>
+        {hoursForecast.map((item) => (
+          <li key={uuid()} className="hours-forecast__item">
+            <span>{item.time}</span>
+            <span>
+              <WeatherIcon icon={item.weatherIcons} iconType="hour" />
+            </span>
+            <span>{item.temperature}&#176;</span>
+          </li>
+        ))}
       </ul>
       <button className="hours-forecast__button">
         <FaCaretRight />

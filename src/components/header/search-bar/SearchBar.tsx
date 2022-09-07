@@ -17,12 +17,12 @@ const SearchBar: React.FC = () => {
     <div className="search-bar">
       <form className="search-bar__form" onSubmit={onSubmit}>
         <input
-          placeholder="Введите город..."
+          placeholder="City name..."
           className="search-bar__input"
           value={searchCity}
           onChange={(e) => setSearchCity(e.target.value)}
         />
-        <button className="search-bar__button">Поиск</button>
+        <button className="search-bar__button">Search</button>
       </form>
     </div>
   );

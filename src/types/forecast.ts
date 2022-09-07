@@ -28,12 +28,13 @@ export interface ForecastItem {
   location: Location;
   currentTime: CurrentTime;
   currentForecast: CurrentForecast;
-  hoursForecast: HoursForecast;
-  weekForecast: WeekForecast;
+  hoursForecast: HoursForecast[];
+  weekForecast: WeekForecast[];
 }
 
 export interface Location {
   name: string;
+  country: string;
   timezone: string;
   latitude: number;
   longitude: number;
@@ -53,17 +54,17 @@ export interface CurrentForecast {
 }
 
 export interface HoursForecast {
-  time: any[];
-  weatherIcons: any[];
-  temperature: any[];
+  time: string;
+  weatherIcons: string;
+  temperature: number;
 }
 
 export interface WeekForecast {
-  weekDaytimeTemp: any[];
-  weekNighttimeTemp: any[];
-  weekWeatherIcons: any[];
-  weekDays: any[];
-  weekDates: any[];
+  weekDaytimeTemp: number;
+  weekNighttimeTemp: number;
+  weekWeatherIcons: string;
+  weekDays: string;
+  weekDates: string;
 }
 
 interface fetchForecastAction {

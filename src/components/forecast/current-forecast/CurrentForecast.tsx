@@ -1,26 +1,33 @@
 import React from 'react';
+import { useTypedSelector } from '../../../hooks/useTypedSelector';
 
-import { FaSun } from 'react-icons/fa';
+import WeatherIcon from '../weather-icon/WeatherIcon';
+import { FaWind } from 'react-icons/fa';
 import './currentForecast.scss';
 
 const CurrentForecast: React.FC = () => {
+  const { currentForecast, currentTime, location } = useTypedSelector(
+    (state) => state.forecast.forecast
+  );
+
+  const { windSpeed, temperature, weatherIcon } = currentForecast;
+  const { time, dayOfWeek } = currentTime;
+  const { name, country } = location;
+
   return (
     <div className="current-forecast">
-      <h3>Погода в Токио</h3>
-      <span>Сейчас 04:52. Вчера в это время +26&#176;</span>
+      <h3>{name}</h3>
+      <span className="current-forecast__sub-title">{country}</span>
+      <span>
+        {dayOfWeek}, {time}
+      </span>
       <div className="current-forecast__info-container">
-        <h3 className="current-forecast__degree">+27&#176;</h3>
-        <FaSun className="current-forecast__icon" />
-        <div className="current-forecast__info">
-          <span>Ясно</span>
-          <span>Ощущается как +31&#176;</span>
-        </div>
+        <h3 className="current-forecast__degree">{temperature}&#176;</h3>
+        <WeatherIcon icon={weatherIcon} iconType="today" />
       </div>
       <div className="current-forecast__additional-info">
-        <span>= 4,1 м/c,Ю</span>
-        <span>= 90%</span>
-        <span>=755 мм рт. ст.</span>
-        <span>= 27&#176;</span>
+        <FaWind className="current-forecast__wind-icon" />
+        <span>{windSpeed} m/s</span>
       </div>
     </div>
   );

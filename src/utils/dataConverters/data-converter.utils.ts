@@ -74,11 +74,13 @@ export const createHoursObject = (data: ForecastFetchedData) => {
     lastTimeIndex
   );
 
-  return {
-    time: hourlyCardsTime,
-    weatherIcons: hourlyCardsWeatherIcons,
-    temperature: hourlyCardsTemperature,
-  };
+  return hourlyCardsTime.map((_, idx) => {
+    return {
+      time: hourlyCardsTime[idx],
+      weatherIcons: hourlyCardsWeatherIcons[idx],
+      temperature: hourlyCardsTemperature[idx],
+    };
+  });
 };
 
 export const createWeekObject = (
@@ -117,11 +119,13 @@ export const createWeekObject = (
   const currentDayAndMonth = currentDateMonthName.map((name: any, idx: any) =>
     [name, currentDateOfMonth[idx]].join(',').replace(',', ' ')
   );
-  return {
-    weekDaytimeTemp: weekDaytimeTemp,
-    weekNighttimeTemp: weekNightimeTemp,
-    weekWeatherIcons: weekWeatherIcons,
-    weekDays: currentWeekDays,
-    weekDates: currentDayAndMonth,
-  };
+  return currentWeekDays.map((_, idx) => {
+    return {
+      weekDaytimeTemp: weekDaytimeTemp[idx],
+      weekNighttimeTemp: weekNightimeTemp[idx],
+      weekWeatherIcons: weekWeatherIcons[idx],
+      weekDays: currentWeekDays[idx],
+      weekDates: currentDayAndMonth[idx],
+    };
+  });
 };

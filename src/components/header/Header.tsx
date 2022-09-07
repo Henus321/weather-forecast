@@ -10,10 +10,8 @@ const Header: React.FC = () => {
       <div className="header__content">
         <div className="header__logo-container">
           <FaReact className="header__logo" />
-          <h2 className="header__title">Погода</h2>
+          <h2 className="header__title">Weather Forecast</h2>
         </div>
-        <h3 className="header__sub-title">Прогноз на 10 дней</h3>
-        {/* Add class as prop late */}
         <SearchBar />
       </div>
     </header>

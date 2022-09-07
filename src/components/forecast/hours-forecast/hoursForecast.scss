@@ -6,7 +6,7 @@
 
   &__list {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
+    grid-template-columns: repeat(24, 1fr);
     grid-column-gap: 1.5rem;
     padding: 1rem 1.5rem;
     justify-content: space-between;
@@ -19,7 +19,6 @@
     flex-direction: column;
     padding: 1rem;
     border-radius: 0.5rem;
-    // width: 13%;
     width: 6rem;
     align-items: center;
 
