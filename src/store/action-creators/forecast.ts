@@ -33,8 +33,6 @@ export const FetchForecastAsync = (cityData: CityItem) => {
         },
       });
 
-      console.log(data);
-
       const location = createLocationObject(cityData);
       const currentTime = createCurrentTimeObject(cityData);
       const currentForecast = createCurrentForecastObject(data);

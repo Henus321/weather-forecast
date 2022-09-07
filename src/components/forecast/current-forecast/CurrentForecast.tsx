@@ -16,7 +16,7 @@ const CurrentForecast: React.FC = () => {
 
   return (
     <div className="current-forecast">
-      <h3>{name}</h3>
+      <h2>{name}</h2>
       <span className="current-forecast__sub-title">{country}</span>
       <span>
         {dayOfWeek}, {time}
