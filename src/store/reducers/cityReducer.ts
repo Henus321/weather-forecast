@@ -16,7 +16,7 @@ const initialItem: CityItem = {
 };
 
 const initialState: CityState = {
-  loading: false,
+  loading: true,
   error: null,
   city: initialItem,
 };

@@ -7,6 +7,7 @@ import TodayForecast from './today-forecast/TodayForecast';
 import LocationMap from './location-map/LocationMap';
 import WeekForecast from './week-forecast/WeekForecast';
 import './forecast.scss';
+import { usePosition } from '../../hooks/usePosition';
 
 const Forecast: React.FC = () => {
   const {
@@ -17,11 +18,18 @@ const Forecast: React.FC = () => {
   const { error: fetchError, loading: fetchLoading } = useTypedSelector(
     (state) => state.forecast
   );
-  const { FetchForecastAsync } = useActions();
+  const { coords, userDeniedGeo } = usePosition();
+  const { FetchForecastAsync, FetchCityByUserCoordsAsync } = useActions();
   const loading = searchLoading || fetchLoading;
 
   useEffect(() => {
-    if (city.name) FetchForecastAsync(city);
+    if (coords.latitude) FetchCityByUserCoordsAsync(coords);
+  }, [coords]);
+
+  useEffect(() => {
+    if (city.name) {
+      FetchForecastAsync(city);
+    }
     // eslint-disable-next-line
   }, [city]);
 
