@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchBar from './search-bar/SearchBar';
+import SearchBar from '../search-bar/SearchBar';
 
 import { FaReact } from 'react-icons/fa';
 import './header.scss';

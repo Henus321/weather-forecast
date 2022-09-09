@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useActions } from '../../../hooks/useActions';
+import { useActions } from '../../hooks/useActions';
 
 import './searchBar.scss';
 

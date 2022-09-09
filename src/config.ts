@@ -9,6 +9,8 @@ export const DELAY_TO_NIGHTTIME = 3;
 export const HOURS_PER_DAY = 24;
 export const DAY_ICON_NAME = 'day';
 export const SCROLL_OFFSET = 100;
+export const SEARCH_ERROR = "Woops! Can't find such a city, try another one";
+export const FETCH_ERROR = 'Woops! Some network error... try again later';
 export const WEEK_DAY_NAMES = [
   'Monday',
   'Tuesday',

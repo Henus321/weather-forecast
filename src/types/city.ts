@@ -4,6 +4,15 @@ export enum CityActionTypes {
   FETCH_CITY_ERROR = 'FETCH_CITY_ERROR',
 }
 
+export interface Coords {
+  latitude: number;
+  longitude: number;
+}
+
+export interface ErrorMessage {
+  message: string;
+}
+
 export interface CityState {
   loading: boolean;
   error: string | null;
