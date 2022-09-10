@@ -10,9 +10,9 @@ export const convertDateToMonth = (idx: number) => {
 };
 
 export const convertDayOfWeek = (idx: number) => {
-  const [correctWeekday] = WEEK_DAY_NAMES.filter(
-    (_, dayWeekIdx) => dayWeekIdx === idx - 1
-  );
+  const [correctWeekday] = WEEK_DAY_NAMES.filter((_, dayWeekIdx) => {
+    return dayWeekIdx === idx;
+  });
   return correctWeekday;
 };
 

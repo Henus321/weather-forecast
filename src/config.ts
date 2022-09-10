@@ -16,13 +16,13 @@ export const FETCH_ERROR = 'Woops! Some network error... try again later';
 export const GEOLOCATION_ERROR =
   'Woops! Geodata turned off, pick city or use search';
 export const WEEK_DAY_NAMES = [
+  'Sunday',
   'Monday',
   'Tuesday',
   'Wednesday',
   'Thursday',
   'Friday',
   'Saturday',
-  'Sunday',
 ];
 export const MONTH_NAMES = [
   'January',
@@ -247,7 +247,6 @@ export const CAPITALS = [
   'Sofia',
   'South Tarawa',
   "St. George's",
-  'St. Peter Port',
   'Stanley',
   'Stockholm',
   'Sucre',
@@ -274,8 +273,7 @@ export const CAPITALS = [
   'Vientiane',
   'Vilnius',
   'Warsaw',
-  'Washington DC',
-  'Washington, D.C.',
+  'Washington',
   'Wellington',
   'West Island',
   'Willemstad',
