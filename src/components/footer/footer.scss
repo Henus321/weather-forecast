@@ -28,6 +28,15 @@
 
   &__icon {
     font-size: 5rem;
+    color: #000;
+
+    &:hover {
+      color: orangered;
+    }
+
+    &:active {
+      color: red;
+    }
   }
 
   &__social-media {
@@ -37,7 +46,16 @@
   &__social-media-item {
     font-size: 3rem;
     margin: 0 0.5rem;
+    color: #000;
     cursor: pointer;
+
+    &:hover {
+      color: orangered;
+    }
+
+    &:active {
+      color: red;
+    }
   }
 
   &__copyright {

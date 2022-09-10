@@ -7,7 +7,7 @@ import TodayForecast from './today-forecast/TodayForecast';
 import LocationMap from './location-map/LocationMap';
 import WeekForecast from './week-forecast/WeekForecast';
 import ErrorMenu from './error-menu/ErrorMenu';
-import Spinner from './spinner/Spinner';
+import Spinner from '../spinner/Spinner';
 
 import './forecast.scss';
 
@@ -39,7 +39,7 @@ const Forecast: React.FC = () => {
     }
     if (coords.latitude) FetchCityByUserCoordsAsync(coords);
     // eslint-disable-next-line
-  }, [coords, userDeniedGeo]);
+  }, [coords, firstLoadWithoutGeo]);
 
   useEffect(() => {
     if (city.name) FetchForecastAsync(city);

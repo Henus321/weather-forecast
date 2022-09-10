@@ -16,14 +16,30 @@ const Footer: React.FC = () => {
           <span>Developed by Alexandr Erkhov</span>
         </div>
         <div className="footer__item">
-          <FaCloudMoonRain className="footer__icon footer__title" />
+          <a
+            href="https://open-meteo.com/en/docs"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <FaCloudMoonRain className="footer__icon footer__title" />
+          </a>
           <span>Based on Open-Meteo API</span>
         </div>
         <div className="footer__item">
           <div className="footer__social-media footer__title">
-            <FaGithub className="footer__social-media-item" />
-            <FaYoutube className="footer__social-media-item" />
-            <FaVk className="footer__social-media-item" />
+            <a
+              href="https://github.com/Henus321"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <FaGithub className="footer__social-media-item" />
+            </a>
+            <a href="https://www.youtube.com/" rel="noreferrer" target="_blank">
+              <FaYoutube className="footer__social-media-item" />
+            </a>
+            <a href="https://vk.com/" rel="noreferrer" target="_blank">
+              <FaVk className="footer__social-media-item" />
+            </a>
           </div>
           <span>Support: tyrantbud@yandex.ru</span>
         </div>

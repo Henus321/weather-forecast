@@ -1,4 +1,4 @@
-import { ReactComponent as LoaderSpinner } from '../../../assets/spinner.svg';
+import { ReactComponent as LoaderSpinner } from '../../assets/spinner.svg';
 import React from 'react';
 
 import './spinner.scss';

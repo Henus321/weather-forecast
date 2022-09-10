@@ -7,7 +7,7 @@ const SearchBar: React.FC = () => {
   const [searchCity, setSearchCity] = useState('');
   const { FetchCityAsync } = useActions();
 
-  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     FetchCityAsync(searchCity);
