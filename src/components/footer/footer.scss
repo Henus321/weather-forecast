@@ -12,6 +12,14 @@
     margin: 0 auto;
     margin-top: 1rem;
     max-width: $default-container;
+
+    @media screen and (max-width: 867px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (max-width: 560px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__item {
@@ -20,6 +28,18 @@
     align-items: center;
     justify-content: center;
     padding: 3rem 1rem;
+  }
+
+  &__api-info {
+    @media screen and (max-width: 867px) {
+      display: none;
+    }
+  }
+
+  &__project-info {
+    @media screen and (max-width: 560px) {
+      display: none;
+    }
   }
 
   &__title {

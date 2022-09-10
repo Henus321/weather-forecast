@@ -11,11 +11,11 @@ const Footer: React.FC = () => {
   return (
     <footer className="footer">
       <div className="footer__content">
-        <div className="footer__item">
+        <div className="footer__item footer__project-info">
           <h2 className="footer__title">Weather Forecast</h2>
           <span>Developed by Alexandr Erkhov</span>
         </div>
-        <div className="footer__item">
+        <div className="footer__item footer__api-info">
           <a
             href="https://open-meteo.com/en/docs"
             rel="noreferrer"

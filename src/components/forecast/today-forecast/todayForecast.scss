@@ -10,6 +10,10 @@
   background-repeat: no-repeat;
   background-size: cover;
 
+  @media screen and (max-width: 867px) {
+    grid-column: 1 / -1;
+  }
+
   &--moon {
     background-image: url('https://images.unsplash.com/photo-1599045151332-ff2587f03eb2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
   }

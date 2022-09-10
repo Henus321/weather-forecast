@@ -104,8 +104,8 @@ export const createWeekObject = (
     )
     .map((code: number) => weatherCodeToIcon(code, DAY_ICON_NAME));
   const currentWeekDays = [
-    ...WEEK_DAY_NAMES.slice(currentDayOfWeekIndex - 1),
-    ...WEEK_DAY_NAMES.slice(0, currentDayOfWeekIndex - 1),
+    ...WEEK_DAY_NAMES.slice(currentDayOfWeekIndex),
+    ...WEEK_DAY_NAMES.slice(0, currentDayOfWeekIndex),
   ];
   const allWeekDates = allWeekTime
     .filter(

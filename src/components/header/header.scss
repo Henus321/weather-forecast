@@ -10,12 +10,20 @@
     padding: 1.5rem 2rem;
     margin: 0 auto;
     max-width: $default-container;
+
+    @media screen and (max-width: 867px) {
+      flex-direction: column;
+    }
   }
 
   &__logo-container {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media screen and (max-width: 867px) {
+      margin-bottom: 1.5rem;
+    }
   }
 
   &__logo {
