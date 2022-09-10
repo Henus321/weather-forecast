@@ -1,4 +1,5 @@
 import { Dispatch } from 'redux';
+import { GEOLOCATION_ERROR, SEARCH_ERROR } from '../../config';
 import { CityAction, CityActionTypes, Coords } from '../../types/city';
 import {
   geocoding,
@@ -36,7 +37,7 @@ export const FetchCityAsync = (city: string) => {
     } catch (error: any) {
       dispatch({
         type: CityActionTypes.FETCH_CITY_ERROR,
-        payload: error.message,
+        payload: SEARCH_ERROR,
       });
     }
   };
@@ -73,8 +74,12 @@ export const FetchCityByUserCoordsAsync = (coords: Coords) => {
     } catch (error: any) {
       dispatch({
         type: CityActionTypes.FETCH_CITY_ERROR,
-        payload: error.message,
+        payload: SEARCH_ERROR,
       });
     }
   };
+};
+
+export const ThrowGeolocationError = () => {
+  return { type: CityActionTypes.FETCH_CITY_ERROR, payload: GEOLOCATION_ERROR };
 };

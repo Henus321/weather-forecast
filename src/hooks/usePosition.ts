@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import { ErrorMessage } from '../types/city';
-
 const initialState = {
   latitude: 0,
   longitude: 0,

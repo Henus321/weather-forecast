@@ -9,10 +9,6 @@ export interface Coords {
   longitude: number;
 }
 
-export interface ErrorMessage {
-  message: string;
-}
-
 export interface CityState {
   loading: boolean;
   error: string | null;

@@ -13,7 +13,7 @@ import {
   createHoursObject,
   createWeekObject,
 } from '../../utils/dataConverters/data-converter.utils';
-import { METEO_API_URL } from '../../config';
+import { FETCH_ERROR, METEO_API_URL } from '../../config';
 
 export const FetchForecastAsync = (cityData: CityItem) => {
   const { latitude, longitude, timezone } = cityData;
@@ -55,7 +55,7 @@ export const FetchForecastAsync = (cityData: CityItem) => {
     } catch (error: any) {
       dispatch({
         type: ForecastActionTypes.FETCH_FORECAST_ERROR,
-        payload: error.message,
+        payload: FETCH_ERROR,
       });
     }
   };

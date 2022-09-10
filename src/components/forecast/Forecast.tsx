@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { FETCH_ERROR, SEARCH_ERROR } from '../../config';
+import { usePosition } from '../../hooks/usePosition';
 
 import TodayForecast from './today-forecast/TodayForecast';
 import LocationMap from './location-map/LocationMap';
 import WeekForecast from './week-forecast/WeekForecast';
+import ErrorMenu from './error-menu/ErrorMenu';
+import Spinner from './spinner/Spinner';
+
 import './forecast.scss';
-import { usePosition } from '../../hooks/usePosition';
 
 const Forecast: React.FC = () => {
   const {
@@ -18,32 +20,45 @@ const Forecast: React.FC = () => {
   const { error: fetchError, loading: fetchLoading } = useTypedSelector(
     (state) => state.forecast
   );
+  const {
+    FetchForecastAsync,
+    FetchCityByUserCoordsAsync,
+    ThrowGeolocationError,
+  } = useActions();
+
+  const [firstLoading, setFirstLoading] = useState(true);
   const { coords, userDeniedGeo } = usePosition();
-  const { FetchForecastAsync, FetchCityByUserCoordsAsync } = useActions();
+  const firstLoadWithoutGeo = firstLoading && userDeniedGeo;
   const loading = searchLoading || fetchLoading;
+  const error = searchError || fetchError;
 
   useEffect(() => {
-    if (coords.latitude) FetchCityByUserCoordsAsync(coords);
-  }, [coords]);
-
-  useEffect(() => {
-    if (city.name) {
-      FetchForecastAsync(city);
+    if (firstLoadWithoutGeo) {
+      ThrowGeolocationError();
+      setFirstLoading(false);
     }
+    if (coords.latitude) FetchCityByUserCoordsAsync(coords);
+    // eslint-disable-next-line
+  }, [coords, userDeniedGeo]);
+
+  useEffect(() => {
+    if (city.name) FetchForecastAsync(city);
+
     // eslint-disable-next-line
   }, [city]);
 
   return (
     <div className="forecast">
-      {searchError && <h2 className="forecast__notice">{SEARCH_ERROR}</h2>}
-      {fetchError && <h2 className="forecast__notice">{FETCH_ERROR}</h2>}
-      {loading && <h2 className="forecast__notice">Loading...</h2>}
-      {!searchError && !fetchError && !loading && (
+      {loading ? (
+        <Spinner />
+      ) : !error ? (
         <>
           <TodayForecast />
           <LocationMap />
           <WeekForecast />
         </>
+      ) : (
+        <ErrorMenu errors={{ searchError, fetchError }} />
       )}
     </div>
   );

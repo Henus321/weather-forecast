@@ -13,6 +13,8 @@ export const DAY_ICON_NAME = 'day';
 export const SCROLL_OFFSET = 100;
 export const SEARCH_ERROR = "Woops! Can't find such a city, try another one";
 export const FETCH_ERROR = 'Woops! Some network error... try again later';
+export const GEOLOCATION_ERROR =
+  'Woops! Geodata turned off, pick city or use search';
 export const WEEK_DAY_NAMES = [
   'Monday',
   'Tuesday',

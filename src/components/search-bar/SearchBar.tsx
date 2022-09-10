@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useActions } from '../../hooks/useActions';
 
 import './searchBar.scss';
 
 const SearchBar: React.FC = () => {
   const [searchCity, setSearchCity] = useState('');
-  const { FetchCityAsync, FetchCityByUserCoordsAsync } = useActions();
+  const { FetchCityAsync } = useActions();
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
