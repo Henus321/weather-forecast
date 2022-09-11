@@ -9,6 +9,7 @@ import './weekForecast.scss';
 
 const WeekForecast: React.FC = () => {
   const { weekForecast } = useTypedSelector((state) => state.forecast.forecast);
+  const { weekCards } = weekForecast;
 
   const containerEl = useRef<HTMLUListElement>(null);
 
@@ -27,7 +28,7 @@ const WeekForecast: React.FC = () => {
           <FaCaretLeft />
         </button>
         <ul ref={containerEl} className="week-forecast__list">
-          {weekForecast.map((item) => (
+          {weekCards.map((item) => (
             <li className="week-forecast__item" key={uuid()}>
               <h3>{item.weekDays}</h3>
               <span className="week-forecast__sub-item">{item.weekDates}</span>

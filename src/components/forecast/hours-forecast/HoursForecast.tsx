@@ -11,6 +11,7 @@ const HoursForecast: React.FC = () => {
   const { hoursForecast } = useTypedSelector(
     (state) => state.forecast.forecast
   );
+  const { hourlyCards } = hoursForecast;
 
   const containerEl = useRef<HTMLUListElement>(null);
 
@@ -27,7 +28,7 @@ const HoursForecast: React.FC = () => {
         <FaCaretLeft />
       </button>
       <ul ref={containerEl} className="hours-forecast__list">
-        {hoursForecast.map((item) => (
+        {hourlyCards.map((item) => (
           <li key={uuid()} className="hours-forecast__item">
             <span>{item.time}</span>
             <span>

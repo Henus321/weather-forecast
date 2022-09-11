@@ -5,15 +5,16 @@
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: min-content min-content;
+  grid-template-rows: repeat(4, min-content);
   align-content: center;
   padding: 2rem;
-  margin: 3rem auto;
+  margin: 0 auto 3rem;
   max-width: $default-container;
 
   @media screen and (max-width: 867px) {
     grid-column: 1 / -1;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: min-content min-content 1fr 1fr;
+    margin: 0 auto 1rem;
   }
 
   &__notice {

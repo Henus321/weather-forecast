@@ -74,13 +74,26 @@ export const createHoursObject = (data: ForecastFetchedData) => {
     lastTimeIndex
   );
 
-  return hourlyCardsTime.map((_, idx) => {
+  const isTodayRain =
+    hourlyCardsWeatherIcons.filter((item) => item.includes('rain')).length > 0
+      ? true
+      : false;
+  const minTemp = Math.min(...hourlyCardsTemperature);
+  const maxTemp = Math.max(...hourlyCardsTemperature);
+  const hourlyCards = hourlyCardsTime.map((_, idx) => {
     return {
       time: hourlyCardsTime[idx],
       weatherIcons: hourlyCardsWeatherIcons[idx],
       temperature: hourlyCardsTemperature[idx],
     };
   });
+
+  return {
+    isTodayRain,
+    minTemp,
+    maxTemp,
+    hourlyCards,
+  };
 };
 
 export const createWeekObject = (
@@ -119,7 +132,14 @@ export const createWeekObject = (
   const currentDayAndMonth = currentDateMonthName.map((name: any, idx: any) =>
     [name, currentDateOfMonth[idx]].join(',').replace(',', ' ')
   );
-  return currentWeekDays.map((_, idx) => {
+
+  const isWeekRain =
+    weekWeatherIcons.filter((item) => item.includes('rain')).length > 0
+      ? true
+      : false;
+  const minTemp = Math.min(...allWeekTemp);
+  const maxTemp = Math.max(...allWeekTemp);
+  const weekCards = currentWeekDays.map((_, idx) => {
     return {
       weekDaytimeTemp: weekDaytimeTemp[idx],
       weekNighttimeTemp: weekNightimeTemp[idx],
@@ -128,4 +148,11 @@ export const createWeekObject = (
       weekDates: currentDayAndMonth[idx],
     };
   });
+
+  return {
+    isWeekRain,
+    minTemp,
+    maxTemp,
+    weekCards,
+  };
 };

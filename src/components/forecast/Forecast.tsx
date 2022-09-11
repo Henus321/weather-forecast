@@ -6,6 +6,9 @@ import { usePosition } from '../../hooks/usePosition';
 import TodayForecast from './today-forecast/TodayForecast';
 import LocationMap from './location-map/LocationMap';
 import WeekForecast from './week-forecast/WeekForecast';
+import DayInfo from './day-info/DayInfo';
+import WeekInfo from './week-info/WeekInfo';
+import CountryInfo from './country-info/CountryInfo';
 import ErrorMenu from './error-menu/ErrorMenu';
 import Spinner from '../spinner/Spinner';
 
@@ -53,6 +56,9 @@ const Forecast: React.FC = () => {
         <Spinner />
       ) : !error ? (
         <>
+          <CountryInfo />
+          <DayInfo />
+          <WeekInfo />
           <TodayForecast />
           <LocationMap />
           <WeekForecast />

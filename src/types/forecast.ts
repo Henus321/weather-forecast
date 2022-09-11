@@ -28,8 +28,8 @@ export interface ForecastItem {
   location: Location;
   currentTime: CurrentTime;
   currentForecast: CurrentForecast;
-  hoursForecast: HoursForecast[];
-  weekForecast: WeekForecast[];
+  hoursForecast: HoursForecast;
+  weekForecast: WeekForecast;
 }
 
 export interface Location {
@@ -54,12 +54,26 @@ export interface CurrentForecast {
 }
 
 export interface HoursForecast {
+  isTodayRain: boolean;
+  minTemp: number;
+  maxTemp: number;
+  hourlyCards: HourlyCard[];
+}
+
+export interface HourlyCard {
   time: string;
   weatherIcons: string;
   temperature: number;
 }
 
 export interface WeekForecast {
+  isWeekRain: boolean;
+  minTemp: number;
+  maxTemp: number;
+  weekCards: WeekCard[];
+}
+
+export interface WeekCard {
   weekDaytimeTemp: number;
   weekNighttimeTemp: number;
   weekWeatherIcons: string;

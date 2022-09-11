@@ -1,0 +1,28 @@
+.week-info {
+  display: flex;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 1.5rem;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+
+  @media screen and (max-width: 560px) {
+    display: none;
+  }
+
+  &__icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    height: 4rem;
+    width: 4rem;
+    background-color: cornflowerblue;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+  }
+
+  &__icon {
+    font-size: 2.5rem;
+    color: white;
+  }
+}

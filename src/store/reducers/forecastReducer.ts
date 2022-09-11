@@ -29,24 +29,38 @@ const initialCurrentForecast: CurrentForecast = {
   windSpeed: 0,
 };
 const initialHoursForecast: HoursForecast = {
-  time: '',
-  weatherIcons: '',
-  temperature: 0,
+  isTodayRain: false,
+  minTemp: 0,
+  maxTemp: 0,
+  hourlyCards: [
+    {
+      time: '',
+      weatherIcons: '',
+      temperature: 0,
+    },
+  ],
 };
 const initialWeekForecast: WeekForecast = {
-  weekDaytimeTemp: 0,
-  weekNighttimeTemp: 0,
-  weekWeatherIcons: '',
-  weekDays: '',
-  weekDates: '',
+  isWeekRain: false,
+  minTemp: 0,
+  maxTemp: 0,
+  weekCards: [
+    {
+      weekDaytimeTemp: 0,
+      weekNighttimeTemp: 0,
+      weekWeatherIcons: '',
+      weekDays: '',
+      weekDates: '',
+    },
+  ],
 };
 
 const initialItem: ForecastItem = {
   location: initialLocation,
   currentTime: initialCurrentTime,
   currentForecast: initialCurrentForecast,
-  hoursForecast: [initialHoursForecast],
-  weekForecast: [initialWeekForecast],
+  hoursForecast: initialHoursForecast,
+  weekForecast: initialWeekForecast,
 };
 
 const initialState: ForecastState = {
