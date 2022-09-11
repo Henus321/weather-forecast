@@ -48,34 +48,34 @@ export interface CurrentTime {
 }
 
 export interface CurrentForecast {
-  temperature: number;
+  temperature: string;
   weatherIcon: string;
   windSpeed: number;
 }
 
 export interface HoursForecast {
   isTodayRain: boolean;
-  minTemp: number;
-  maxTemp: number;
+  minTemp: string;
+  maxTemp: string;
   hourlyCards: HourlyCard[];
 }
 
 export interface HourlyCard {
   time: string;
   weatherIcons: string;
-  temperature: number;
+  temperature: string;
 }
 
 export interface WeekForecast {
   isWeekRain: boolean;
-  minTemp: number;
-  maxTemp: number;
+  minTemp: string;
+  maxTemp: string;
   weekCards: WeekCard[];
 }
 
 export interface WeekCard {
-  weekDaytimeTemp: number;
-  weekNighttimeTemp: number;
+  weekDaytimeTemp: string;
+  weekNighttimeTemp: string;
   weekWeatherIcons: string;
   weekDays: string;
   weekDates: string;

@@ -21,9 +21,7 @@ const DayInfo: React.FC = () => {
         )}
       </div>
       <span>
-        Today: {information}; temperature from{' '}
-        {minTemp >= 0 ? '+' + minTemp : minTemp} to{' '}
-        {maxTemp >= 0 ? '+' + maxTemp : maxTemp}
+        Today: {information}; temperature from {minTemp} to {maxTemp}
       </span>
     </div>
   );

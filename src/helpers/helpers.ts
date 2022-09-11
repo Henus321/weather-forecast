@@ -16,6 +16,10 @@ export const convertDayOfWeek = (idx: number) => {
   return correctWeekday;
 };
 
+export const addPlusIfPositiveValue = (number: number) => {
+  return number > 0 ? '+' + number : '' + number;
+};
+
 export const weatherCodeToIcon = (weatherCode: number, timeOfDay: string) => {
   switch (weatherCode) {
     case 0:

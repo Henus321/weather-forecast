@@ -7,6 +7,7 @@ import {
   WEEK_DAY_NAMES,
 } from '../../config';
 import {
+  addPlusIfPositiveValue,
   convertDateToMonth,
   convertDayOfWeek,
   convertHourToDaytime,
@@ -46,7 +47,7 @@ export const createCurrentForecastObject = (data: ForecastFetchedData) => {
     currentDayTime
   );
   return {
-    temperature: data.current_weather.temperature,
+    temperature: addPlusIfPositiveValue(data.current_weather.temperature),
     weatherIcon: weatherIcon,
     windSpeed: data.current_weather.windspeed,
   };
@@ -84,14 +85,14 @@ export const createHoursObject = (data: ForecastFetchedData) => {
     return {
       time: hourlyCardsTime[idx],
       weatherIcons: hourlyCardsWeatherIcons[idx],
-      temperature: hourlyCardsTemperature[idx],
+      temperature: addPlusIfPositiveValue(hourlyCardsTemperature[idx]),
     };
   });
 
   return {
     isTodayRain,
-    minTemp,
-    maxTemp,
+    minTemp: addPlusIfPositiveValue(minTemp),
+    maxTemp: addPlusIfPositiveValue(maxTemp),
     hourlyCards,
   };
 };
@@ -119,7 +120,11 @@ export const createWeekObject = (
   const currentWeekDays = [
     ...WEEK_DAY_NAMES.slice(currentDayOfWeekIndex),
     ...WEEK_DAY_NAMES.slice(0, currentDayOfWeekIndex),
-  ];
+  ].map((day, idx) => {
+    if (idx === 0) return 'Today';
+    return day;
+  });
+
   const allWeekDates = allWeekTime
     .filter(
       (_: any, idx: any) => (idx - DELAY_TO_DAYTIME) % HOURS_PER_DAY === 0
@@ -141,8 +146,8 @@ export const createWeekObject = (
   const maxTemp = Math.max(...allWeekTemp);
   const weekCards = currentWeekDays.map((_, idx) => {
     return {
-      weekDaytimeTemp: weekDaytimeTemp[idx],
-      weekNighttimeTemp: weekNightimeTemp[idx],
+      weekDaytimeTemp: addPlusIfPositiveValue(weekDaytimeTemp[idx]),
+      weekNighttimeTemp: addPlusIfPositiveValue(weekNightimeTemp[idx]),
       weekWeatherIcons: weekWeatherIcons[idx],
       weekDays: currentWeekDays[idx],
       weekDates: currentDayAndMonth[idx],
@@ -151,8 +156,8 @@ export const createWeekObject = (
 
   return {
     isWeekRain,
-    minTemp,
-    maxTemp,
+    minTemp: addPlusIfPositiveValue(minTemp),
+    maxTemp: addPlusIfPositiveValue(maxTemp),
     weekCards,
   };
 };

@@ -22,9 +22,7 @@ const WeekInfo: React.FC = () => {
         )}
       </div>
       <span>
-        This week: {information}; temperature from{' '}
-        {minTemp >= 0 ? '+' + minTemp : minTemp} to{' '}
-        {maxTemp >= 0 ? '+' + maxTemp : maxTemp}
+        This week: {information}; temperature from {minTemp} to {maxTemp}
       </span>
     </div>
   );

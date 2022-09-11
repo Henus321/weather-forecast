@@ -11,6 +11,7 @@ const SearchBar: React.FC = () => {
     event.preventDefault();
 
     FetchCityAsync(searchCity);
+    setSearchCity('');
   };
 
   return (

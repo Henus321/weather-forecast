@@ -24,30 +24,30 @@ const initialCurrentTime: CurrentTime = {
   dayOfWeekIndex: 0,
 };
 const initialCurrentForecast: CurrentForecast = {
-  temperature: 0,
+  temperature: '',
   weatherIcon: '',
   windSpeed: 0,
 };
 const initialHoursForecast: HoursForecast = {
   isTodayRain: false,
-  minTemp: 0,
-  maxTemp: 0,
+  minTemp: '',
+  maxTemp: '',
   hourlyCards: [
     {
       time: '',
       weatherIcons: '',
-      temperature: 0,
+      temperature: '',
     },
   ],
 };
 const initialWeekForecast: WeekForecast = {
   isWeekRain: false,
-  minTemp: 0,
-  maxTemp: 0,
+  minTemp: '',
+  maxTemp: '',
   weekCards: [
     {
-      weekDaytimeTemp: 0,
-      weekNighttimeTemp: 0,
+      weekDaytimeTemp: '',
+      weekNighttimeTemp: '',
       weekWeatherIcons: '',
       weekDays: '',
       weekDates: '',

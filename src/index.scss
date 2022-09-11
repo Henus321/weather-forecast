@@ -31,3 +31,8 @@ code {
   grid-template-rows: min-content 1fr min-content;
   margin: 0 auto;
 }
+
+::selection {
+  background-color: orangered;
+  color: white;
+}
