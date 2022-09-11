@@ -1,3 +1,5 @@
+@import '../../sass/variables.scss';
+
 .search-bar {
   grid-column: 1 / -1;
   flex: 0.7;
@@ -8,7 +10,7 @@
 
   &__form {
     display: flex;
-    background-color: orangered;
+    background-color: $color-primary;
     padding: 1rem;
     border-radius: 1rem;
   }
@@ -30,7 +32,7 @@
   &__button {
     padding: 0.5rem 1rem;
     border: none;
-    background-color: orangered;
+    background-color: $color-primary;
     color: #fff;
     font-size: 1.6rem;
     cursor: pointer;

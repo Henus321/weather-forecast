@@ -9,6 +9,7 @@
   align-content: center;
   padding: 2rem;
   margin: 0 auto 3rem;
+  min-height: 65vh;
   max-width: $default-container;
 
   @media screen and (max-width: 867px) {

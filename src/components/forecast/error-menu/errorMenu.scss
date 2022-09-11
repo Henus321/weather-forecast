@@ -1,9 +1,16 @@
+@import '../../../sass/variables.scss';
+
 .error {
   grid-column: 1 / -1;
   padding: 2rem 4rem;
   border-radius: 2rem;
   background-color: #fff;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+  margin-top: 3rem;
+
+  @media screen and (max-width: 867px) {
+    margin-top: 1rem;
+  }
 
   &__message {
     text-align: center;
@@ -37,11 +44,11 @@
     cursor: pointer;
 
     &:hover {
-      color: orangered;
+      color: $color-primary;
     }
 
     &:active {
-      color: red;
+      color: $color-primary-dark;
     }
   }
 }

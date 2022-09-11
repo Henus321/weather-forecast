@@ -1,3 +1,5 @@
+@import './sass/variables.scss';
+
 *,
 *::before,
 *::after {
@@ -33,6 +35,6 @@ code {
 }
 
 ::selection {
-  background-color: orangered;
+  background-color: $color-primary;
   color: white;
 }
