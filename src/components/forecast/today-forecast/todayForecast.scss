@@ -9,6 +9,8 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  filter: opacity(0.8);
+  text-shadow: #000 1px 1px 1px;
 
   @media screen and (max-width: 867px) {
     grid-column: 1 / -1;
