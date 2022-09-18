@@ -36,7 +36,7 @@ export const FetchCityAsync = (city: string) => {
     } catch (error: any) {
       dispatch({
         type: CityActionTypes.FETCH_CITY_ERROR,
-        payload: SEARCH_ERROR,
+        payload: `${SEARCH_ERROR}. ${error.message}`,
       });
     }
   };
@@ -72,7 +72,7 @@ export const FetchCityByUserCoordsAsync = (coords: Coords) => {
     } catch (error: any) {
       dispatch({
         type: CityActionTypes.FETCH_CITY_ERROR,
-        payload: SEARCH_ERROR,
+        payload: `${SEARCH_ERROR}. ${error.message}`,
       });
     }
   };

@@ -51,7 +51,6 @@ export const FetchForecastAsync = (cityData: CityItem) => {
         type: ForecastActionTypes.FETCH_FORECAST_SUCCESS,
         payload: forecast,
       });
-      
     } catch (error: any) {
       dispatch({
         type: ForecastActionTypes.FETCH_FORECAST_ERROR,
