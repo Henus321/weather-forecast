@@ -69,7 +69,6 @@ export const FetchCityByUserCoordsAsync = (coords: Coords) => {
         type: CityActionTypes.FETCH_CITY_SUCCESS,
         payload: cityData,
       });
-      // error type?
     } catch (error: any) {
       dispatch({
         type: CityActionTypes.FETCH_CITY_ERROR,
