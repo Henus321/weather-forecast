@@ -27,15 +27,17 @@ export const createLocationObject = (data: CityItem) => {
 };
 
 export const createCurrentTimeObject = (data: CityItem) => {
-  const currentTime = data.curCityTime.slice(11, 16);
-  const currentHour = +data.curCityTime.slice(11, 13);
+  const currentTime = data.curCityTime.slice(0, 5);
+  const currentHour = +data.curCityTime.slice(0, 2);
   const timeOfDay = convertHourToDaytime(currentHour);
-  const dayOfWeek = convertDayOfWeek(data.dayOfWeek);
+  const { correctWeekday, correctWeekdayIdx } = convertDayOfWeek(
+    data.dayOfWeek
+  );
   return {
     time: currentTime,
     timeOfDay: timeOfDay,
-    dayOfWeek: dayOfWeek,
-    dayOfWeekIndex: data.dayOfWeek,
+    dayOfWeek: correctWeekday,
+    dayOfWeekIndex: correctWeekdayIdx,
   };
 };
 
@@ -104,7 +106,7 @@ export const createWeekObject = (
   const allWeekTime = data.hourly.time;
   const allWeekTemp = data.hourly.temperature_2m;
   const allWeatherCodes = data.hourly.weathercode;
-  const currentDayOfWeekIndex = forecast.dayOfWeek;
+  const { correctWeekdayIdx } = convertDayOfWeek(forecast.dayOfWeek);
 
   const weekDaytimeTemp = allWeekTemp.filter(
     (_: number, idx: number) => (idx - DELAY_TO_DAYTIME) % HOURS_PER_DAY === 0
@@ -118,8 +120,8 @@ export const createWeekObject = (
     )
     .map((code: number) => weatherCodeToIcon(code, DAY_ICON_NAME));
   const currentWeekDays = [
-    ...WEEK_DAY_NAMES.slice(currentDayOfWeekIndex),
-    ...WEEK_DAY_NAMES.slice(0, currentDayOfWeekIndex),
+    ...WEEK_DAY_NAMES.slice(correctWeekdayIdx),
+    ...WEEK_DAY_NAMES.slice(0, correctWeekdayIdx),
   ].map((day, idx) => {
     if (idx === 0) return 'Today';
     return day;

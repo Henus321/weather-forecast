@@ -16,8 +16,9 @@ export const FetchCityAsync = (city: string) => {
       const { latitude, longitude, country, name, timezone } = await geocoding(
         city
       );
-      const { day_of_week: dayOfWeek, datetime: curCityTime } =
-        await getTimeInCity(timezone);
+      const { day_full: dayOfWeek, time: curCityTime } = await getTimeInCity(
+        timezone
+      );
 
       const cityData = {
         latitude,
@@ -52,9 +53,9 @@ export const FetchCityByUserCoordsAsync = (coords: Coords) => {
       const { latitude, longitude, country, name, timezone } = await geocoding(
         city
       );
-      const { day_of_week: dayOfWeek, datetime: curCityTime } =
-        await getTimeInCity(timezone);
-
+      const { day_full: dayOfWeek, time: curCityTime } = await getTimeInCity(
+        timezone
+      );
       const cityData = {
         latitude,
         longitude,

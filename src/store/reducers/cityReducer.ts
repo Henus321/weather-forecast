@@ -11,7 +11,7 @@ const initialItem: CityItem = {
   country: '',
   name: '',
   timezone: '',
-  dayOfWeek: 0,
+  dayOfWeek: '',
   curCityTime: '',
 };
 

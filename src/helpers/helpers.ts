@@ -9,11 +9,15 @@ export const convertDateToMonth = (idx: number) => {
   return correctMonth;
 };
 
-export const convertDayOfWeek = (idx: number) => {
-  const [correctWeekday] = WEEK_DAY_NAMES.filter((_, dayWeekIdx) => {
-    return dayWeekIdx === idx;
+export const convertDayOfWeek = (curDayOfWeek: string) => {
+  const [correctWeekday] = WEEK_DAY_NAMES.filter((dayWeek) => {
+    return dayWeek === curDayOfWeek;
   });
-  return correctWeekday;
+  const correctWeekdayIdx = WEEK_DAY_NAMES.findIndex(
+    (day) => day === correctWeekday
+  );
+
+  return { correctWeekday, correctWeekdayIdx };
 };
 
 export const addPlusIfPositiveValue = (number: number) => {

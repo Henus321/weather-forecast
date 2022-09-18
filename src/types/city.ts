@@ -21,7 +21,7 @@ export interface CityItem {
   country: string;
   name: string;
   timezone: string;
-  dayOfWeek: number;
+  dayOfWeek: string;
   curCityTime: string;
 }
 
