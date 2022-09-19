@@ -3,6 +3,7 @@ import { Dispatch } from 'redux';
 import {
   ForecastAction,
   ForecastActionTypes,
+  ForecastFetchedData,
   ForecastItem,
 } from '../../types/forecast';
 import { CityItem } from '../../types/city';
@@ -12,7 +13,7 @@ import {
   createCurrentForecastObject,
   createHoursObject,
   createWeekObject,
-} from '../../utils/dataConverters/data-converter.utils';
+} from '../../utils/dataConverters/dataConverter';
 import { FETCH_ERROR, METEO_API_URL } from '../../config';
 
 export const FetchForecastAsync = (cityData: CityItem) => {
@@ -22,16 +23,19 @@ export const FetchForecastAsync = (cityData: CityItem) => {
       type: ForecastActionTypes.FETCH_FORECAST,
     });
     try {
-      const { data } = await axios.get(`${METEO_API_URL}`, {
-        params: {
-          latitude: latitude,
-          longitude: longitude,
-          hourly: 'temperature_2m,weathercode',
-          current_weather: true,
-          windspeed_unit: 'ms',
-          timezone: timezone,
-        },
-      });
+      const { data } = await axios.get<ForecastFetchedData>(
+        `${METEO_API_URL}`,
+        {
+          params: {
+            latitude: latitude,
+            longitude: longitude,
+            hourly: 'temperature_2m,weathercode',
+            current_weather: true,
+            windspeed_unit: 'ms',
+            timezone: timezone,
+          },
+        }
+      );
 
       const location = createLocationObject(cityData);
       const currentTime = createCurrentTimeObject(cityData);

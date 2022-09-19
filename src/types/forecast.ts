@@ -5,6 +5,9 @@ export enum ForecastActionTypes {
 }
 
 export interface ForecastFetchedData {
+  latitude: number;
+  longitude: number;
+  timezone: string;
   current_weather: {
     time: string;
     weathercode: number;
