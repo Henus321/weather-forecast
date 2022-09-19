@@ -1,6 +1,6 @@
 ## Weather Forecast
 
-![App logo](https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg)
+![App logo](/src/assets/logo.png)
 
 Weather forecast app with user geodata and map. You will get forecast at launch by your coordinats. In case geodata is not allowed in your browser, use the search bar or choose a city from the list
 
